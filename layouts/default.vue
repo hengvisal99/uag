@@ -39,9 +39,9 @@
 
     </UHeader>
     <slot />
-    <footer>
-      footer
-    </footer>
+    <baseFooter>
+      
+    </baseFooter>
   </div>
 </template>
 <script setup lang="ts">

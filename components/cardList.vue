@@ -1,8 +1,7 @@
 
 <script setup lang="ts">
-import { defineProps, ref } from 'vue';
-import { type Card } from '~/interfaces/card'
 
+import { type Card } from '~/interfaces/card'
 const props = defineProps<{
     title: String,
     cardList : Card[],

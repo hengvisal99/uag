@@ -4,10 +4,13 @@
         <category></category>
         <cardList :title="'TRENDING GEAR'" :cardList="tredingList"></cardList>
         <cardList :title="'EXPLORE UAG'" :cardList="exploreList" :buttonShop="'SHOP NOW'"></cardList>
+        <productFeature :productFeature="materialProduct"></productFeature>
+        <productFeature :productFeature="watchFeature"></productFeature>
     </div>
 </template>
 <script setup lang="ts">
 import { type Card } from '~/interfaces/card'
+import { type ProductFeature } from '~/interfaces/productFeature';
 const tredingList = ref<Card[]>([
     {
         id: 1,
@@ -169,4 +172,54 @@ const exploreList = ref<Card[]>([
         price: '$89.95'
     },
 ]);
+const watchFeature = ref<ProductFeature>({
+    title: 'SUPERIOR STRAPS',
+    leftImg: 'https://images.ctfassets.net/9hslf09drsil/1qFUUZEiXdLSNyN6ND42We/5375aadf05fdb162c67c5bc5b5c4c622/glasert_20221022_UAG_1433.jpg?w=1920&q=70&fm=webp',
+    leftTitle: 'Comfortable, durable, and dependable Watch Straps.',
+    rightImg: 'https://images.ctfassets.net/9hslf09drsil/7fhtEREMzwMT1WJq6bbx67/dc8274f9a4abfc5fc3ac8cda4c3da6ec/Apple_Watch_63.jpg?w=1920&q=70&fm=webp',
+    rightTitle: 'Designed for your most rigorous activities.',
+    label: 'At UAG we are always looking to surpass the watch strap standard. Serving up a new high standard for watch straps with our latest designs. Whether you are catching a wave or hitting the trails, our straps will give you the unconstricted freedom to conquer the day.',
+    productFeatureDetail: [
+        {
+            img: "https://images.ctfassets.net/9hslf09drsil/4TlW0Ay1xPBDkQjym6j9aU/a8edce60d896b336c383c5831dc4b6fe/lifetimewarranty_01.png?w=1920&q=70&fm=webp",
+            name: 'Limited Lifetime Warranty',
+        },
+        {
+            img: "https://images.ctfassets.net/9hslf09drsil/3oOMoi530fynnpoPn7EbSq/79ddbe5fc3707e1dedc76f1eb6c75df9/STAINLESS_STEAL.png?w=1920&q=70&fm=webp",
+            name: 'Stainless Steel Hardware',
+        },
+        {
+            img: "https://images.ctfassets.net/9hslf09drsil/1mYZxBmFwzKPLllxTztuPY/be9154bd5ec331944e11b4e081016d6e/WATER_RESISTANT.png?w=1920&q=70&fm=webp",
+            name: 'Water Resistant',
+        },
+        {
+            img: "https://images.ctfassets.net/9hslf09drsil/3osznWbcXYclZ2fiWVHSXY/df01a052612ed1299bdf99d930f337da/tuck_closure_01.png?w=1920&q=70&fm=webp",
+            name: 'Tuck Closure',
+        }
+    ],
+    buttonName : 'BROWSE WATCH BANDS'
+})
+const materialProduct = ref<ProductFeature>({
+    title: 'DROP EVERYTHING',
+    leftImg: 'https://images.ctfassets.net/9hslf09drsil/78DcJHeiQHd2USWxZnunO6/93396d8d3606347fa21a788e36df7837/Homepage_Mobile_____5.jpg?w=1920&q=70&fm=webp',
+    leftTitle: 'Military-grade certification for protection against shock by enduring rigorous laboratory drop testing.',
+    rightImg: 'https://images.ctfassets.net/9hslf09drsil/5yK7jF9J0wIcN4JRgCmJvF/a7566f33a2b687ebfa9853a0b2faddc9/6301540.jpg?w=1920&q=70&fm=webp',
+    rightTitle: 'Perfect balance of defense and design.',
+    label: 'Within the “Drop Everything” campaign, every series of product was tried and tested. We are always trying to push our products to the next level in terms of protection and design. There is no better way to get there than actual drop tests and real world usage. Protection at levels we know our customers expect from UAG.',
+    productFeatureDetail: [
+        {
+            img: "https://images.ctfassets.net/9hslf09drsil/26sD8KCsvYmPJa8FC813V2/3aee089b619cc831187f64d85ca6a06a/DROP_TEST.png?w=1920&q=70&fm=webp",
+            name: 'Meets military drop-test standards [MIL STD 810G 516.6] providing increased shock protection',
+        },
+        {
+            img: "https://images.ctfassets.net/9hslf09drsil/4TlW0Ay1xPBDkQjym6j9aU/a8edce60d896b336c383c5831dc4b6fe/lifetimewarranty_01.png?w=1920&q=70&fm=webp",
+            name: 'Limited Lifetime Warranty',
+        },
+        {
+            img: "https://images.ctfassets.net/9hslf09drsil/7qsuEmL6dhVHhW1nDSEYDL/7a592f33a78a52a0571687419e8d9616/FREE_SHIPPING.png?w=1920&q=70&fm=webp",
+            name: 'Free Global Shipping (exclusions apply)',
+        },
+    ],
+    buttonName : 'SHOP NOW'
+})
 </script>
