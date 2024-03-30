@@ -39,12 +39,13 @@
 
     </UHeader>
     <slot />
-    <baseFooter>
+    <baseFooter :footer="footer">
       
     </baseFooter>
   </div>
 </template>
 <script setup lang="ts">
+import {type Footer} from '~/interfaces/footer'
 const isOpen = ref(false)
 const links = [
   {
@@ -158,4 +159,138 @@ const links = [
     to: '/gear'
   }
 ]
+const footer = ref<Footer>({
+  menu : [
+    {
+      name : 'SHOP',
+      subMenu : [
+        {
+          name : 'Cases // Protectors',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'iPhone 15 Cases',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Galaxy S23 Cases',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Watch Straps',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Sleeves',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Gear',
+          icon : 'i-heroicons-minus-small-20-solid',
+        }
+      ]
+    },
+    {
+      name : 'EXPLORE',
+      subMenu : [
+        {
+          name : 'About Us',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'UAG Life',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Refer a Friend',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Loyalty Rewards',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Service Discounts',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Field Log',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Ambassadors',
+          icon : 'i-heroicons-minus-small-20-solid',
+        }
+      ]
+    },
+    {
+      name : 'BUSINESS',
+      subMenu : [
+        {
+          name : 'Business Inquiries',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Enterprise by UAG',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Deal Registration',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Built for Healthcare',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Affiliate Program',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+      ]
+    },
+    {
+      name : 'ABOUT',
+      subMenu : [
+        {
+          name : 'About Us',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Support',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Warranty Information',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Returns',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Web Accessibility',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+        {
+          name : 'Intellectual Property',
+          icon : 'i-heroicons-minus-small-20-solid',
+        },
+      ]
+    }
+  ],
+  social : [
+    {
+      name : 'Log In',
+      icon : 'i-heroicons-user'
+    },
+    {
+      name : 'Privacy Policy',
+    },
+    {
+      name : 'Terms and Conditions',
+    },
+  ],
+  logo : ['i-uil-instagram','i-uil-twitter','i-uil-facebook','i-uil-youtube' ]
+
+})
 </script>
