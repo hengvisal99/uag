@@ -1,10 +1,15 @@
 <script setup lang="ts">
 
 import { type Footer } from '~/interfaces/footer'
-const props = defineProps<{
+const {footer } = defineProps<{
     footer: Footer,
 }>()
-
+const hoverStates : any = ref(footer.menu.map(() => ({})));
+console.log(hoverStates.value)
+const toggleHover = (menuIndex: number, subMenuIndex: number, state: boolean) => {
+    hoverStates.value[menuIndex][subMenuIndex] = state;
+    console.log(hoverStates.value)
+};
 </script>
 <template>
     <div class="border border-red-600 bg-black px-[115px] py-[93px] text-white">
@@ -26,9 +31,11 @@ const props = defineProps<{
                     <div class="border border-green-500">
                         <h1 class="mb-4">{{ item.name }}</h1>
                         <div class="flex flex-col gap-6 py-3">
-                            <template v-for="(itemSubMenu, indexSubMenu) in item.subMenu" :key="indexSubMenu">
-                                <div class='flex'>
-                                    <Icon :name="itemSubMenu.icon" color="white" class="hidden size-6 hover:scale-125" />
+                            <template v-for="(itemSubMenu, subMenuIndex) in item.subMenu" :key="subMenuIndex">
+                                <div class='flex cursor-pointer hover:translate-x-[1px] transition-transform ' @mouseover="toggleHover(index, subMenuIndex, true)"
+                                    @mouseleave="toggleHover(index, subMenuIndex, false)">
+                                    <Icon v-if="hoverStates[index][subMenuIndex]"
+                                        :name="itemSubMenu.icon" color="white" class=" hidden size-6" />
                                     <p class="text-[#DDDCDC]"> {{ itemSubMenu.name }}</p>
                                 </div>
 
@@ -39,10 +46,11 @@ const props = defineProps<{
                 </template>
 
             </div>
-            <div class="grid grid-flow-col grid-cols-5">
+            <div class="grid grid-flow-col grid-cols-5 mt-4">
                 <template v-for="(itemSocial, indexSocial) in footer.social" :key="indexSocial">
                     <div class="border border-green-500 flex gap-4">
-                        <Icon class="size-6 hover:scale-125" v-if="itemSocial.icon" :name="itemSocial.icon" color="white"/>
+                        <Icon class="size-6 hover:scale-125" v-if="itemSocial.icon" :name="itemSocial.icon"
+                            color="white" />
                         <p>{{ itemSocial.name }}</p>
                     </div>
 
@@ -50,7 +58,7 @@ const props = defineProps<{
 
                 <div class="border border-green-500 flex flex-row justify-around">
                     <div class="size-16" v-for="(logo, logoIndex) in footer.logo" :key="logoIndex">
-                        <Icon :name="logo" color="white" class="size-6 hover:scale-125" />
+                        <Icon :name="logo" color="white" class="cursor-pointer transition-transform duration-300 size-6 hover:scale-125" />
                     </div>
 
                 </div>

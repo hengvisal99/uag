@@ -2,10 +2,11 @@
     <div>
         <slide></slide>
         <category></category>
-        <cardList :title="'TRENDING GEAR'" :cardList="tredingList"></cardList>
+
+        <!-- <cardList :title="'TRENDING GEAR'" :cardList="tredingList"></cardList>
         <cardList :title="'EXPLORE UAG'" :cardList="exploreList" :buttonShop="'SHOP NOW'"></cardList>
         <productFeature :productFeature="materialProduct"></productFeature>
-        <productFeature :productFeature="watchFeature"></productFeature>
+        <productFeature :productFeature="watchFeature"></productFeature> -->
     </div>
 </template>
 <script setup lang="ts">
@@ -197,7 +198,7 @@ const watchFeature = ref<ProductFeature>({
             name: 'Tuck Closure',
         }
     ],
-    buttonName : 'BROWSE WATCH BANDS'
+    buttonName: 'BROWSE WATCH BANDS'
 })
 const materialProduct = ref<ProductFeature>({
     title: 'DROP EVERYTHING',
@@ -220,6 +221,6 @@ const materialProduct = ref<ProductFeature>({
             name: 'Free Global Shipping (exclusions apply)',
         },
     ],
-    buttonName : 'SHOP NOW'
+    buttonName: 'SHOP NOW'
 })
 </script>

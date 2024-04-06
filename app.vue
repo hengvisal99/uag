@@ -25,3 +25,12 @@ function handleMediaQueryChange(mediaQuery) {
   }
 }
 </script>
+<style scoped>
+
+
+.overflow-x-scroll {
+  overflow-x: auto; /* Changed to auto to show scrollbar only when needed */
+  scrollbar-width: none;
+  white-space: nowrap; /* Prevent wrapping to maintain one row */
+}
+</style>

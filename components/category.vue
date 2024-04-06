@@ -38,6 +38,7 @@ const categories = ref([
         img : 'https://images.ctfassets.net/9hslf09drsil/1e5a6Yl01kPpJJTE2EuwPt/c4a4cb1f08462140646594c38daaa471/UAG_BG_HIP-PACK-2021_OLV_03.png?w=1920&q=70&fm=webp',
         name : 'Gear Cases'
     }
+
 ])
 </script>
 
@@ -45,19 +46,28 @@ const categories = ref([
     <div class="h-[540px]  w-full">
         <div class="gap-10 pl-28 h-full  flex flex-col  justify-center items-start">
             <h1 class="font-bold text-3xl">CATEGORIES</h1>
-            <div :class="{ '-translate-x-2/4': isNext   }" class="ease-in-out duration-100 flex gap-10  w-max">
-                <div  v-for="item in categories" :key="item.id" class="hover:-translate-y-1 flex flex-row gap-5 border rounded px-4 cursor-pointer items-center">
+            <div :class="{ '-translate-x-2/4': isNext   }" class="items-center h-[95px] w-[calc(100%+50rem)] px-3 overflow-x-auto scrollbar-none  ease-in-out duration-100 flex gap-10">
+
+                <div  v-for="item in categories" :key="item.id" 
+                class="h-[80px]  hover:-translate-y-1 flex flex-none flex-row gap-5 border rounded px-4 cursor-pointer items-center">
                     <img class="h-20 w-20"
                         :src=item.img>
                     <p class="h-5 font-700">{{ item.name }}</p>
                 </div>
+
             </div>
-            <div class="w-full flex gap-10  items-center">
+            <div class="w-full  flex gap-10  items-center">
                 <UProgress size="sm" :value="bar" class="w-3/4" :color="'black'" />
-                <UButton @click="bar = 70;isNext = false" color="gray" variant="ghost" icon="i-heroicons-arrow-left-16-solid" class="hover:bg-inherit" />
-                <UButton @click="bar = 100; isNext = true" color="gray" variant="ghost" icon="i-heroicons-arrow-right-16-solid" class="hover:bg-inherit" />
+                <UButton @click="bar = 70;isNext = false" color="gray" variant="ghost" icon="i-heroicons-arrow-left-16-solid" class="xs:hidden md:block hover:bg-inherit" />
+                <UButton @click="bar = 100; isNext = true" color="gray" variant="ghost" icon="i-heroicons-arrow-right-16-solid" class="xs:hidden lg:block hover:bg-inherit" />
             </div>
 
         </div>
     </div>
 </template>
+
+<style scoped>
+.scrollbar-none{
+    scrollbar-width: none;
+}
+</style>
