@@ -5,10 +5,8 @@ const {footer } = defineProps<{
     footer: Footer,
 }>()
 const hoverStates : any = ref(footer.menu.map(() => ({})));
-console.log(hoverStates.value)
 const toggleHover = (menuIndex: number, subMenuIndex: number, state: boolean) => {
     hoverStates.value[menuIndex][subMenuIndex] = state;
-    console.log(hoverStates.value)
 };
 </script>
 <template>

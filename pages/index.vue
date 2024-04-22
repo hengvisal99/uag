@@ -3,10 +3,10 @@
         <slide></slide>
         <category></category>
 
-        <!-- <cardList :title="'TRENDING GEAR'" :cardList="tredingList"></cardList>
+        <cardList :title="'TRENDING GEAR'" :cardList="tredingList"></cardList>
         <cardList :title="'EXPLORE UAG'" :cardList="exploreList" :buttonShop="'SHOP NOW'"></cardList>
         <productFeature :productFeature="materialProduct"></productFeature>
-        <productFeature :productFeature="watchFeature"></productFeature> -->
+        <productFeature :productFeature="watchFeature"></productFeature>
     </div>
 </template>
 <script setup lang="ts">

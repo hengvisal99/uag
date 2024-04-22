@@ -37,109 +37,130 @@
         <UNavigationTree :links="links" />
       </template>
 
+
     </UHeader>
     <slot />
-    <baseFooter :footer="footer">
-      
-    </baseFooter>
+    <template v-if="lastRouteSegment !== 'all'">
+      <baseFooter :footer="footer">
+
+      </baseFooter>
+    </template>
+
   </div>
 </template>
 <script setup lang="ts">
-import {type Footer} from '~/interfaces/footer'
+import { type Footer } from '~/interfaces/footer'
+const route = useRoute()
+const lastRouteSegment = ref('');
+
+const updateLastRouteSegment = () => {
+  const segments = route.path.split('/'); // Split the path by slashes
+  lastRouteSegment.value = segments[segments.length - 1]; // Get the last segment
+  console.log('Route changed to:', lastRouteSegment.value);
+};
+
+watch(() => route.path, updateLastRouteSegment);
+
+onMounted(updateLastRouteSegment);
 const isOpen = ref(false)
 const links = [
   {
     label: 'PHONE',
-    // icon: 'i-heroicons-square-3-stack-3d',
-    to: '/phone',
     children: [
       {
-        label: 'Pricing',
-        to: '/pro/pricing',
-        icon: 'i-heroicons-paper-airplane-solid',
-        description: 'A simple pricing, for solo developers or teams.'
+        label: 'ALl Phones',
+        to: '/collections/all',
       },
       {
-        label: 'Templates',
-        to: '/pro/templates',
-        icon: 'i-heroicons-computer-desktop',
-        description: 'Get started with one of our official templates.'
+        label: 'iPhone 15 Pro Max',
+        to: '/collections',
+      },
+      {
+        label: 'Galaxy S24 Ultra',
+        to: '/collections',
+      },
+      {
+        label: 'Pixel 8 Pro',
+        to: '/collections',
+      },
+      {
+        label: 'OnePlus 9RT',
+        to: '/collections',
       }
     ]
   },
   {
     label: 'TABLET',
     icon: 'i-heroicons-square-3-stack-3d',
-    to: '/tablet',
     children: [
       {
-        label: 'Pricing',
-        to: '/pro/pricing',
-        icon: 'i-heroicons-credit-card',
-        description: 'A simple pricing, for solo developers or teams.'
+        label: 'ALl Tablets',
+        to: '/collections',
       },
       {
-        label: 'Templates',
+        label: 'iPad Pro 12.9',
+        to: '/pro/pricing',
+      },
+      {
+        label: 'Surface Pro 10/9',
         to: '/pro/templates',
-        icon: 'i-heroicons-computer-desktop',
-        description: 'Get started with one of our official templates.'
+      },
+      {
+        label: 'Tab A9+ 11',
+        to: '/pro/templates',
       }
     ]
   },
   {
     label: 'LAPTOP',
     icon: 'i-heroicons-square-3-stack-3d',
-    to: '/laptop',
     children: [
       {
-        label: 'Pricing',
-        to: '/pro/pricing',
-        icon: 'i-heroicons-credit-card',
-        description: 'A simple pricing, for solo developers or teams.'
+        label: 'ALl Laptops',
+        to: '/collections',
       },
       {
-        label: 'Templates',
+        label: 'MacBook Air 15',
+        to: '/pro/pricing',
+      },
+      {
+        label: 'Surface Laptop Go 3/2/1',
         to: '/pro/templates',
-        icon: 'i-heroicons-computer-desktop',
-        description: 'Get started with one of our official templates.'
       }
     ]
   },
   {
     label: 'HEADPHONES',
-    icon: 'i-heroicons-square-3-stack-3d',
-    to: '/headphones',
     children: [
       {
-        label: 'Pricing',
-        to: '/pro/pricing',
-        icon: 'i-heroicons-credit-card',
-        description: 'A simple pricing, for solo developers or teams.'
+        label: 'ALl Heaphones',
+        to: '/collections',
       },
       {
-        label: 'Templates',
+        label: 'AirPods Pro (3rd Gen)',
+        to: '/pro/pricing',
+      },
+      {
+        label: 'Galaxy buds',
         to: '/pro/templates',
-        icon: 'i-heroicons-computer-desktop',
-        description: 'Get started with one of our official templates.'
       }
     ]
   },
   {
     label: 'WATCH',
-    icon: 'i-heroicons-square-3-stack-3d',
-    to: '/watch',
     children: [
       {
-        label: 'Pricing',
-        to: '/pro/pricing',
-        icon: 'i-heroicons-credit-card',
-        description: 'A simple pricing, for solo developers or teams.'
+        label: 'ALl Watches',
+        icon: 'i-heroicons-rocket-launch',
+        to: '/collections',
       },
       {
-        label: 'Templates',
+        label: 'Apple Watch Ultra 2',
+        to: '/pro/pricing',
+      },
+      {
+        label: 'Apple Watch',
         to: '/pro/templates',
-        icon: 'i-heroicons-computer-desktop',
-        description: 'Get started with one of our official templates.'
       }
     ]
   },
@@ -159,138 +180,139 @@ const links = [
     to: '/gear'
   }
 ]
+
 const footer = ref<Footer>({
-  menu : [
+  menu: [
     {
-      name : 'SHOP',
-      subMenu : [
+      name: 'SHOP',
+      subMenu: [
         {
-          name : 'Cases // Protectors',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Cases // Protectors',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'iPhone 15 Cases',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'iPhone 15 Cases',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Galaxy S23 Cases',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Galaxy S23 Cases',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Watch Straps',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Watch Straps',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Sleeves',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Sleeves',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Gear',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Gear',
+          icon: 'i-heroicons-minus-small-20-solid',
         }
       ]
     },
     {
-      name : 'EXPLORE',
-      subMenu : [
+      name: 'EXPLORE',
+      subMenu: [
         {
-          name : 'About Us',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'About Us',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'UAG Life',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'UAG Life',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Refer a Friend',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Refer a Friend',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Loyalty Rewards',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Loyalty Rewards',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Service Discounts',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Service Discounts',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Field Log',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Field Log',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Ambassadors',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Ambassadors',
+          icon: 'i-heroicons-minus-small-20-solid',
         }
       ]
     },
     {
-      name : 'BUSINESS',
-      subMenu : [
+      name: 'BUSINESS',
+      subMenu: [
         {
-          name : 'Business Inquiries',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Business Inquiries',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Enterprise by UAG',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Enterprise by UAG',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Deal Registration',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Deal Registration',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Built for Healthcare',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Built for Healthcare',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Affiliate Program',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Affiliate Program',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
       ]
     },
     {
-      name : 'ABOUT',
-      subMenu : [
+      name: 'ABOUT',
+      subMenu: [
         {
-          name : 'About Us',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'About Us',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Support',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Support',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Warranty Information',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Warranty Information',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Returns',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Returns',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Web Accessibility',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Web Accessibility',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
         {
-          name : 'Intellectual Property',
-          icon : 'i-heroicons-minus-small-20-solid',
+          name: 'Intellectual Property',
+          icon: 'i-heroicons-minus-small-20-solid',
         },
       ]
     }
   ],
-  social : [
+  social: [
     {
-      name : 'Log In',
-      icon : 'i-heroicons-user'
+      name: 'Log In',
+      icon: 'i-heroicons-user'
     },
     {
-      name : 'Privacy Policy',
+      name: 'Privacy Policy',
     },
     {
-      name : 'Terms and Conditions',
+      name: 'Terms and Conditions',
     },
   ],
-  logo : ['i-uil-instagram','i-uil-twitter','i-uil-facebook','i-uil-youtube' ]
+  logo: ['i-uil-instagram', 'i-uil-twitter', 'i-uil-facebook', 'i-uil-youtube']
 
 })
 </script>
